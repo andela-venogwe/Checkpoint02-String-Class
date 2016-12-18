@@ -37,7 +37,7 @@ const StringExtend = {
 
   toCurrency() {
     const currencyString = this.replace(/[^\d.]/gi, '').split('.');
-    const integer = currencyString[0] || 0;
+    const integer = currencyString[0] || '0';
     const fraction = currencyString[1] || '00';
     return `${integer.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}.${fraction}`;
   },
