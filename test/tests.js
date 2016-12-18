@@ -112,6 +112,7 @@ describe('String Class', () => {
       expect('122121.11'.toCurrency()).to.equal('122,121.11');
       expect('122121'.toCurrency()).to.equal('122,121.00');
       expect('0.11'.toCurrency()).to.equal('0.11');
+      expect('.11'.toCurrency()).to.equal('0.11');
     });
 
     it('should remove no numeral characters from string', () => {
