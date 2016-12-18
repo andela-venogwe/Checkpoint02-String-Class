@@ -1,0 +1,11 @@
+{
+  "name": "string-class",
+  "version": "1.0.0",
+  "description": "string class extension",
+  "main": "string-class.js",
+  "scripts": {
+    "test": "mocha test/tests.js"
+  },
+  "author": "Enogwe Victor",
+  "license": "MIT"
+}
