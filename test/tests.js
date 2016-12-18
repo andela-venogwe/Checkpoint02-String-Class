@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-await-in-loop*/
-const chai = require('chai'), StringClass = require('../String-class');
+const chai = require('chai'), StringClass = require('../src/String-class');
 
 const expect = chai.expect, assert = chai.assert, should = chai.should();
 
