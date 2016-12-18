@@ -4,8 +4,13 @@
   "description": "string class extension",
   "main": "string-class.js",
   "scripts": {
-    "test": "mocha test/tests.js"
+    "test": "./node_modules/mocha/bin/mocha test/tests.js"
   },
   "author": "Enogwe Victor",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "*",
+    "coveralls": "^2.11.15",
+    "mocha": "*"
+  }
 }
