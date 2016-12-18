@@ -149,7 +149,8 @@ describe('String Class', () => {
     });
 
     it('should return the letters in alternating cases', () => {
-      expect('hElP mE gEt Home'.alternatingCase()).to.equal('hElP mE gEt hOmE');
+      expect('hElP mE gEt Home'.alternatingCase())
+      .to.equal('hElP mE gEt hOmE');
     });
 
     it('should start with a lower case', () => {
