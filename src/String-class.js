@@ -68,17 +68,8 @@ const StringExtend = {
   },
 
   numberWords() {
-    const numbersAsString = [
-    'zero',
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine'];
+    const numbersAsString = ['zero', 'one', 'two', 'three', 'four', 'five',
+    'six', 'seven', 'eight', 'nine'];
     return this.replace(/\D+/g, '')
     .split('')
     .map(number => numbersAsString[number])
