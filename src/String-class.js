@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop*/
 const StringExtend = {
   hasVowels() {
     return /[aeiou]/i.test(this);
@@ -69,11 +68,12 @@ const StringExtend = {
 
   numberWords() {
     const numbersAsString = ['zero', 'one', 'two', 'three', 'four', 'five',
-    'six', 'seven', 'eight', 'nine'];
+      'six', 'seven', 'eight', 'nine'
+    ];
     return this.replace(/\D+/g, '')
-    .split('')
-    .map(number => numbersAsString[number])
-    .join(' ');
+      .split('')
+      .map(number => numbersAsString[number])
+      .join(' ');
   },
 
   isDigit() {

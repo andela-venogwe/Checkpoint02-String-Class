@@ -1,18 +1,17 @@
-/* eslint-disable no-unused-vars*/
-/* eslint-disable no-await-in-loop*/
-const chai = require('chai'), StringClass = require('../src/String-class');
+const chai = require('chai'),
+  StringClass = require('../src/String-class');
 
-const expect = chai.expect, assert = chai.assert, should = chai.should();
+const expect = chai.expect;
 
 describe('String Class', () => {
   describe('hasVowels', () => {
     it('should return a Boolean', () => {
-      'ddfgnmpl'.hasVowels().should.be.a('boolean');
-      'aydfccg'.hasVowels().should.be.a('boolean');
+      expect(typeof 'ddfgnmpl'.hasVowels()).to.equal('boolean');
+      expect(typeof 'aydfccg'.hasVowels()).to.equal('boolean');
     });
 
     it('should return true if the string contains vowels', () => {
-      assert.equal(true, 'aydfccg'.hasVowels());
+      expect('aydfccg'.hasVowels()).to.equal(true);
     });
 
     it('should return false if the string has no vowel', () => {
@@ -26,7 +25,7 @@ describe('String Class', () => {
 
   describe('toUpper', () => {
     it('should return a String', () => {
-      'ddfgnmpl'.toUpper().should.be.a('string');
+      expect(typeof 'ddfgnmpl'.toUpper()).to.equal('string');
     });
 
     it('should transfom the string letters to uppercase', () => {
@@ -36,7 +35,7 @@ describe('String Class', () => {
 
   describe('toLower', () => {
     it('should return a String', () => {
-      'ddfgnmpl'.toLower().should.be.a('string');
+      expect(typeof 'ddfgnmpl'.toLower()).to.equal('string');
     });
 
     it('should transfom the string letters to lowercase', () => {
@@ -46,7 +45,7 @@ describe('String Class', () => {
 
   describe('ucFirst', () => {
     it('should return a String', () => {
-      'ddfgnmpl'.ucFirst().should.be.a('string');
+      expect(typeof 'ddfgnmpl'.ucFirst()).to.equal('string');
     });
 
     it('should return the original string', () => {
@@ -60,12 +59,12 @@ describe('String Class', () => {
 
   describe('isQuestion', () => {
     it('should return a Boolean', () => {
-      'ddfgnmpl'.isQuestion().should.be.a('boolean');
-      'aydfccg?'.isQuestion().should.be.a('boolean');
+      expect(typeof 'ddfgnmpl'.isQuestion()).to.equal('boolean');
+      expect(typeof 'aydfccg?'.isQuestion()).to.equal('boolean');
     });
 
     it('should return true if the string is a question', () => {
-      assert.equal(true, 'are you a question ?'.isQuestion());
+      expect('aydfccg?'.isQuestion()).to.equal(true);
     });
 
     it('should return false if the string is not a question', () => {
@@ -79,7 +78,7 @@ describe('String Class', () => {
 
   describe('words', () => {
     it('should return an array', () => {
-      assert.equal(true, Array.isArray('hello says the devil'.words()));
+      expect(Array.isArray('hello says the devil'.words())).to.equal(true);
     });
 
     it('should return a list of the words in the string', () => {
@@ -93,18 +92,18 @@ describe('String Class', () => {
 
   describe('wordCount', () => {
     it('should return a Number', () => {
-      'hello says the devil'.wordCount().should.be.a('number');
+      expect(typeof 'hello says the devil'.wordCount()).to.equal('number');
     });
 
     it('should return the number of words in the string', () => {
-      'hello says the devil'.wordCount().should.equal(4);
-      ''.wordCount().should.equal(0);
+      expect('hello says the devil'.wordCount()).to.equal(4);
+      expect(''.wordCount()).to.equal(0);
     });
   });
 
   describe('toCurrency', () => {
     it('should return a String', () => {
-      '12212.11221'.toCurrency().should.be.a('string');
+      expect(typeof '12212.11221'.toCurrency()).to.equal('string');
     });
 
     it('should return a currency representation of the String', () => {
@@ -123,7 +122,7 @@ describe('String Class', () => {
 
   describe('fromCurrency', () => {
     it('should return a String', () => {
-      '12212.11221'.fromCurrency().should.be.a('number');
+      expect(typeof '12212.11221'.fromCurrency()).to.equal('number');
     });
 
     it('should return the currency as a number', () => {
@@ -133,7 +132,7 @@ describe('String Class', () => {
 
   describe('inverseCase', () => {
     it('should return a Boolean', () => {
-      'ddfgnmpl'.inverseCase().should.be.a('string');
+      expect(typeof 'ddfgnmpl'.inverseCase()).to.equal('string');
     });
 
     it(`should return each letter in the string
@@ -146,12 +145,12 @@ describe('String Class', () => {
 
   describe('alternatingCase', () => {
     it('should return a String', () => {
-      '12212.11221'.alternatingCase().should.be.a('string');
+      expect(typeof '12212.11221'.alternatingCase()).to.equal('string');
     });
 
     it('should return the letters in alternating cases', () => {
       expect('hElP mE gEt Home'.alternatingCase())
-      .to.equal('hElP mE gEt hOmE');
+        .to.equal('hElP mE gEt hOmE');
     });
 
     it('should start with a lower case', () => {
@@ -161,7 +160,7 @@ describe('String Class', () => {
 
   describe('getMiddle', () => {
     it('should return a String', () => {
-      'terrible'.getMiddle().should.be.a('string');
+      expect(typeof 'terrible'.getMiddle()).to.equal('string');
     });
 
     it('should return the character(s) in the middle of the string', () => {
@@ -173,7 +172,7 @@ describe('String Class', () => {
 
   describe('numberWords', () => {
     it('should return a String', () => {
-      '12212.11221'.numberWords().should.be.a('string');
+      expect(typeof '12212.11221'.numberWords()).to.equal('string');
     });
 
     it('should return the numbers in words', () => {
@@ -183,28 +182,27 @@ describe('String Class', () => {
 
   describe('isDigit', () => {
     it('should return a Boolean', () => {
-      'terrible'.isDigit().should.be.a('boolean');
+      expect(typeof 'terrible'.isDigit()).to.equal('boolean');
     });
 
     it('should return true if the string is a digit(one number)', () => {
-      assert.equal(true, '2'.isDigit());
+      expect('2'.isDigit()).to.equal(true);
       expect('12345'.isDigit()).to.equal(false);
     });
   });
 
   describe('doubleCheck', () => {
     it('should return a Boolean', () => {
-      'terrible'.doubleCheck().should.be.a('boolean');
+      expect(typeof 'terrible'.doubleCheck()).to.equal('boolean');
     });
 
     it('should return true if the string is a digit(one number)', () => {
-      assert.equal(true, '22'.doubleCheck());
       expect('12345'.doubleCheck()).to.equal(false);
       expect('12>>'.doubleCheck()).to.equal(true);
     });
 
     it('should return true if the string contains double spaces', () => {
-      assert.equal(true, '  '.doubleCheck());
+      expect('  '.doubleCheck()).to.equal(true);
     });
   });
 });
