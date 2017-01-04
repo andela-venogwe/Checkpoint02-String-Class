@@ -1,32 +1,70 @@
+/**
+ * Object that extends the string class prototype.
+ */
 const StringExtend = {
+  /**
+   * hasVowels
+   * @returns {boolean} true or false
+   * @description checks to see if the string contains vowels
+   */
   hasVowels() {
     return /[aeiou]/i.test(this);
   },
 
+  /**
+   * toUpper
+   * @returns {string} the uppercase string version
+   * @description converts the string to uppercase
+   */
   toUpper() {
     return this.replace(/[a-z]/g, letter =>
       String.fromCharCode(letter.charCodeAt(0) - 32)
     );
   },
 
+  /**
+   * toLower
+   * @returns {string} the lowercase string version
+   * @description converts the string to lowercase
+   */
   toLower() {
     return this.replace(/[A-Z]/g, letter =>
       String.fromCharCode(letter.charCodeAt(0) + 32)
     );
   },
 
+  /**
+   * ucFirst
+   * @returns {string} a string with uppercase firt letter
+   * @description turns the first letter of a string to uppercase
+   */
   ucFirst() {
     return this.replace(/[a-z]/, letter => letter.toUpper());
   },
 
+  /**
+   * isQuestion
+   * @returns {boolean} true or false
+   * @description checks if a string is a question
+   */
   isQuestion() {
     return /\?$/.test(this);
   },
 
+  /**
+   * words
+   * @returns {object} an array of words
+   * @description show an array of the words in a string
+   */
   words() {
-    return this.match(/(\w+)|\w+/g);
+    return this.match(/[\w'_-]+/g);
   },
 
+  /**
+   * wordCount
+   * @returns {number} a neutral or positive integer
+   * @description counts the number of words in a string
+   */
   wordCount() {
     if (this.words() !== null) {
       return this.words().length;
@@ -34,23 +72,44 @@ const StringExtend = {
     return 0;
   },
 
+  /**
+   * toCurrency
+   * @returns {string} a currency string
+   * @description formats a string to currency
+   */
   toCurrency() {
     const currencyString = this.replace(/[^\d.]/gi, '').split('.');
     const integer = currencyString[0] || '0';
-    const fraction = currencyString[1] || '00';
-    return `${integer.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}.${fraction}`;
+    const fraction = parseFloat(`0.${currencyString[1]}`).toFixed(2)
+      .slice(1);
+    return `${integer.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}${fraction}`;
   },
 
+  /**
+   * fromCurrency
+   * @returns {number} a number in currency format
+   * @description formats a currency string to number
+   */
   fromCurrency() {
     return +this.replace(/,*/g, '');
   },
 
+  /**
+   * inverseCase
+   * @returns {string} inverted string case
+   * @description inverts a string's letter casing
+   */
   inverseCase() {
     return this.replace(/[a-zA-Z]/g, letter =>
       (/[a-z]/.test(letter) ? letter.toUpper() : letter.toLower())
     );
   },
 
+  /**
+   * alternatingCase
+   * @returns {string} string with alternating case
+   * @description alternates string letters case
+   */
   alternatingCase() {
     return this.trim().split(' ').map(word => (word.replace(/[^a-z]/gi, '')
       .replace(/[a-z]/gi, (letter, index) =>
@@ -58,6 +117,11 @@ const StringExtend = {
       ))).join(' ');
   },
 
+  /**
+   * getMiddle
+   * @returns {string} a string
+   * @description gets the mid-character(s) of a string
+   */
   getMiddle() {
     const length = this.length;
     if (length % 2 === 0) {
@@ -66,6 +130,11 @@ const StringExtend = {
     return this[parseInt((length / 2), 10)];
   },
 
+  /**
+   * numberWords
+   * @returns {object} array of numbers in words
+   * @description converts each numeral in number to word equivalent
+   */
   numberWords() {
     const numbersAsString = ['zero', 'one', 'two', 'three', 'four', 'five',
       'six', 'seven', 'eight', 'nine'
@@ -76,10 +145,20 @@ const StringExtend = {
       .join(' ');
   },
 
+  /**
+   * isDigit
+   * @returns {boolean} true or false
+   * @description checks string is a digit
+   */
   isDigit() {
     return /^\d{1}$/g.test(this);
   },
 
+  /**
+   * doubleCheck
+   * @returns {boolean} true or false
+   * @description check if string contains doubly-repeating characters
+   */
   doubleCheck() {
     return /(.)\1{1}/.test(this);
   }
