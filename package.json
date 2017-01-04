@@ -4,7 +4,8 @@
   "description": "string class extension",
   "main": "string-class.js",
   "scripts": {
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
+    "lint": "./node_modules/.bin/eslint src/String-class.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,11 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "codeclimate-test-reporter": "^0.4.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0"
   }
