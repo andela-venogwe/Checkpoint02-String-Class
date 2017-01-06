@@ -39,7 +39,8 @@ const StringExtend = {
    * @description turns the first letter of a string to uppercase
    */
   ucFirst() {
-    return this.replace(/[a-z]/, letter => letter.toUpper());
+    return /[a-z]/.test(this[0]) ? (this
+    .replace(/[a-z]/, letter => letter.toUpper())) : this.slice(0);
   },
 
   /**
@@ -78,11 +79,14 @@ const StringExtend = {
    * @description formats a string to currency
    */
   toCurrency() {
-    const currencyString = this.replace(/[^\d.]/gi, '').split('.');
+    if (!/^(\.|\d*\.?)(\d*)?\d$/.test(this)) {
+      return 'invalid currency string';
+    }
+    const currencyString = this.split('.');
     const integer = currencyString[0] || '0';
     const fraction = parseFloat(`0.${currencyString[1]}`).toFixed(2)
       .slice(1);
-    return `${integer.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}${fraction}`;
+    return `${integer.replace(/(\d)(?=(\d{3})+(?!\d))/, '$1,')}${fraction}`;
   },
 
   /**
@@ -91,7 +95,8 @@ const StringExtend = {
    * @description formats a currency string to number
    */
   fromCurrency() {
-    return +this.replace(/,*/g, '');
+    return /^(\.|\d*\.?)(\d*)?\d$/
+    .test(this) ? +this : 'invalid currency string';
   },
 
   /**
@@ -111,10 +116,10 @@ const StringExtend = {
    * @description alternates string letters case
    */
   alternatingCase() {
-    return this.trim().split(' ').map(word => (word.replace(/[^a-z]/gi, '')
-      .replace(/[a-z]/gi, (letter, index) =>
-        (index % 2 === 0 ? letter.toLower() : letter.toUpper())
-      ))).join(' ');
+    return this.split(' ').map(word => (word
+    .replace(/[a-z]/gi, (letter, index) =>
+      (index % 2 === 0 ? letter.toLower() : letter.toUpper())
+    ))).join(' ');
   },
 
   /**

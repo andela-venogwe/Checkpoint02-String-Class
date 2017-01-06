@@ -1,9 +1,21 @@
-const chai = require('chai'),
-  StringClass = require('../src/String-class'),
-  expect = chai.expect,
+const chai = require('chai');
+
+const StringClass = require('../src/String-class');
+
+const expect = chai.expect,
   testString = 'hello says the devil\'s',
   testVowelString = 'aydfccg',
-  testConsonantString = 'ddfgnmpl';
+  testConsonantString = 'ddfgnmpl',
+  UpperCaseString = 'DDFGNMPL',
+  questionString = 'aydfccg?',
+  currencyString = '12212.11221',
+  noDecimalCurrency = '122121',
+  threeDecimalCurrency = '0.177',
+  mantissaCurrency = '.11',
+  invalidCurrency = '11,2.3.4',
+  singleDigit = '2',
+  doubleString = 'terrible',
+  noDoubles = '21plics';
 
 describe('String Class', () => {
   describe('hasVowels', () => {
@@ -41,7 +53,7 @@ describe('String Class', () => {
     });
 
     it('should transfom the string letters to lowercase', () => {
-      expect('DDFGNMPL'.toLower()).to.equal(testConsonantString);
+      expect(UpperCaseString.toLower()).to.equal(testConsonantString);
     });
   });
 
@@ -57,17 +69,22 @@ describe('String Class', () => {
     it('should transform the First Character in string to Upper case', () => {
       expect(testConsonantString.ucFirst()[0]).to.equal('D');
     });
+
+    it(`should return the string if the 
+    first letter isn't a letter or uppercase word`, () => {
+      expect(currencyString.ucFirst()).to.equal(currencyString);
+    });
   });
 
   describe('isQuestion', () => {
     it('should return a Boolean', () => {
       expect(typeof testConsonantString.isQuestion()).to.equal('boolean');
-      expect(typeof 'aydfccg?'.isQuestion()).to.equal('boolean');
+      expect(typeof questionString.isQuestion()).to.equal('boolean');
       expect(typeof testConsonantString.isQuestion()).to.equal('boolean');
     });
 
     it('should return true if the string is a question', () => {
-      expect('aydfccg?'.isQuestion()).to.equal(true);
+      expect(questionString.isQuestion()).to.equal(true);
     });
 
     it('should return false if the string is not a question', () => {
@@ -81,7 +98,7 @@ describe('String Class', () => {
 
   describe('words', () => {
     it('should return an array', () => {
-      expect(Array.isArray('hello says the devil'.words())).to.equal(true);
+      expect(Array.isArray(testString.words())).to.equal(true);
     });
 
     it('should return a list of the words in the string', () => {
@@ -99,44 +116,43 @@ describe('String Class', () => {
 
     it('should return the number of words in the string', () => {
       expect(testString.wordCount()).to.equal(4);
+    });
+
+    it('should return zero for an empty string', () => {
       expect(''.wordCount()).to.equal(0);
     });
   });
 
   describe('toCurrency', () => {
     it('should return a String', () => {
-      expect(typeof '12212.11221'.toCurrency()).to.equal('string');
+      expect(typeof currencyString.toCurrency()).to.equal('string');
     });
 
     it('should return a currency representation of the String', () => {
-      expect('12212.11221'.toCurrency()).to.equal('12,212.11');
-      expect('122121.11'.toCurrency()).to.equal('122,121.11');
-      expect('0.11'.toCurrency()).to.equal('0.11');
-      expect('0.177'.toCurrency()).to.equal('0.18');
-      expect('0.11.1.1'.toCurrency()).to.equal('0.11');
-      expect('.11'.toCurrency()).to.equal('0.11');
+      expect(currencyString.toCurrency()).to.equal('12,212.11');
     });
 
-    it('should return the currency to two decimal places', () => {
-      expect('122121'.toCurrency()).to.equal('122,121.00');
-      expect('0.11'.toCurrency()).to.equal('0.11');
-      expect('0.177'.toCurrency()).to.equal('0.18');
-      expect('.11'.toCurrency()).to.equal('0.11');
+    it('should return a currency with two decimal places', () => {
+      expect(noDecimalCurrency.toCurrency()).to.equal('122,121.00');
+      expect(threeDecimalCurrency.toCurrency()).to.equal('0.18');
     });
 
-    it('should remove non numeral characters from string', () => {
-      expect('12212ade is here to.11221 stay'
-        .toCurrency()).to.equal('12,212.11');
+    it('should add leading 0 to currency strings with only mantissa', () => {
+      expect(mantissaCurrency.toCurrency()).to.equal('0.11');
+    });
+
+    it('should reject invalid currency formats', () => {
+      expect(invalidCurrency.toCurrency()).to.equal('invalid currency string');
     });
   });
 
   describe('fromCurrency', () => {
-    it('should return a String', () => {
-      expect(typeof '12212.11221'.fromCurrency()).to.equal('number');
+    it('should return the currency as a number', () => {
+      expect(typeof currencyString.fromCurrency()).to.equal('number');
     });
 
-    it('should return the currency as a number', () => {
-      expect('12212.11221'.fromCurrency()).to.equal(12212.11221);
+    it('should return invalid currency string for invalid entries', () => {
+      expect(invalidCurrency.fromCurrency()).to.equal('invalid currency string');
     });
   });
 
@@ -145,21 +161,20 @@ describe('String Class', () => {
       expect(typeof testConsonantString.inverseCase()).to.equal('string');
     });
 
-    it(`should return each letter in the string
-     as an inverse of its current case`, () => {
-        expect(testConsonantString.inverseCase()).to.equal('DDFGNMPL');
-        expect('AYDFCCG'.inverseCase()).to.equal(testVowelString);
-      });
+    it('should invert the case of each letter in the string', () => {
+      expect(testConsonantString.inverseCase()).to.equal('DDFGNMPL');
+      expect(UpperCaseString.inverseCase()).to.equal('ddfgnmpl');
+    });
   });
 
   describe('alternatingCase', () => {
     it('should return a String', () => {
-      expect(typeof '12212.11221'.alternatingCase()).to.equal('string');
+      expect(typeof testString.alternatingCase()).to.equal('string');
     });
 
     it('should return the letters in alternating cases', () => {
       expect(testString.alternatingCase())
-        .to.equal('hElLo sAyS tHe dEvIlS');
+        .to.equal('hElLo sAyS tHe dEvIl\'s');
     });
 
     it('should start with a lower case', () => {
@@ -180,11 +195,12 @@ describe('String Class', () => {
 
   describe('numberWords', () => {
     it('should return a String', () => {
-      expect(typeof '12212.11221'.numberWords()).to.equal('string');
+      expect(typeof currencyString.numberWords()).to.equal('string');
     });
 
     it('should return the numbers in words', () => {
-      expect('12345'.numberWords()).to.equal('one two three four five');
+      expect(currencyString.numberWords())
+      .to.equal('one two two one two one one two two one');
     });
   });
 
@@ -194,23 +210,27 @@ describe('String Class', () => {
     });
 
     it('should return true if the string is a digit(one number)', () => {
-      expect('2'.isDigit()).to.equal(true);
-      expect('12345'.isDigit()).to.equal(false);
+      expect(singleDigit.isDigit()).to.equal(true);
+      expect(noDecimalCurrency.isDigit()).to.equal(false);
     });
   });
 
   describe('doubleCheck', () => {
     it('should return a Boolean', () => {
-      expect(typeof 'terrible'.doubleCheck()).to.equal('boolean');
+      expect(typeof doubleString.doubleCheck()).to.equal('boolean');
     });
 
-    it('should return true if the string is a digit(one number)', () => {
-      expect('12345'.doubleCheck()).to.equal(false);
-      expect('12>>'.doubleCheck()).to.equal(true);
+    it('should return true if the string contains double characters', () => {
+      expect(doubleString.doubleCheck()).to.equal(true);
+      expect(currencyString.doubleCheck()).to.equal(true);
+    });
+
+    it('should return false for strings with no repeating characters', () => {
+      expect('  '.doubleCheck()).to.equal(true);
     });
 
     it('should return true if the string contains double spaces', () => {
-      expect('  '.doubleCheck()).to.equal(true);
+      expect(noDoubles.doubleCheck()).to.equal(false);
     });
   });
 });

@@ -5,7 +5,7 @@
   "main": "string-class.js",
   "scripts": {
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
-    "lint": "./node_modules/.bin/eslint src/String-class.js"
+    "lint": "./node_modules/.bin/eslint src/String-class.js test/tests.js"
   },
   "repository": {
     "type": "git",
