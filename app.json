@@ -1,0 +1,7 @@
+{
+  "name": "String Class Extension",
+  "description": "An app that extends the String class in Javascript. Using Prototype Oriented Programming, methods, procedures and instance attributes are added to the String class to support more string manipulation features.",
+  "repository": "https://github.com/andela-venogwe/Checkpoint02-String-Class.git",
+  "logo": "https://smilebasicsource.com/favicon.ico",
+  "keywords": ["node", "express", "static", "string mainipulation"]
+}
