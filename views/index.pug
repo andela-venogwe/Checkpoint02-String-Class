@@ -3,13 +3,14 @@ extends layout.pug
 block content
   div#main(ng-controller='DropdownController' ng-cloak)
     h1 String Class
+    p An app that extends the String class in Javascript to support more string manipulation features.
     div#description
       p
         span#method-name(ng-bind="selectedMethod[0]")
         span(ng-if="selectedMethod[1]", ng-bind="' : ' + selectedMethod[1]")
     div#input-box
       p(type='Name:')
-        input.big(ng-model="inputText", ng-change="{{result = inputText[selectedMethod[0]]()}}", placeholder='Enter Text String Here...')
+        input.big(ng-model="inputText", ng-change="{{result = inputText[selectedMethod[0]]()}}", placeholder='Enter Test String Here...')
     div.custom-dropdown.big
       label {{selectedMethod[1]}}
       select(ng-model="selectedMethod", ng-options="method[0] for method in methods.values", ng-selected="{{result = inputText[selectedMethod[0]]()}}")
