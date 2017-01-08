@@ -23,7 +23,7 @@ A javascript App that extends the String class in Javascript, using Prototype Or
 - To run the mocha test for the app use: `npm test`
 
 ## Web Deployment
-- Use the App online by visiting the link https://v-inverted-index.herokuapp.com
+- Use the App online by visiting the link https://v-string-class.herokuapp.com/
 - deploy the app automatically to your heroku account by clicking the button below
 - [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/andela-venogwe/Checkpoint02-String-Class/tree/develop)
 
