@@ -1,6 +1,6 @@
 const chai = require('chai');
 
-const StringClass = require('../src/String-class');
+const StringClass = require('../src/string-class');
 
 const expect = chai.expect,
   testString = 'hello says the devil\'s',
@@ -193,14 +193,19 @@ describe('String Class', () => {
     });
   });
 
-  describe('numberWords', () => {
+  describe('numberWords ', () => {
     it('should return a String', () => {
       expect(typeof currencyString.numberWords()).to.equal('string');
     });
 
     it('should return the numbers in words', () => {
-      expect(currencyString.numberWords())
-      .to.equal('one two two one two one one two two one');
+      expect(noDecimalCurrency.numberWords())
+      .to.equal('one two two one two one');
+    });
+
+    it('should return invalid characters present in number(s) string', () => {
+      expect(testString.numberWords())
+      .to.equal('invalid characters present in number(s) string');
     });
   });
 

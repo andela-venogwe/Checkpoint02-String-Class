@@ -137,17 +137,17 @@ const StringExtend = {
 
   /**
    * numberWords
-   * @returns {object} array of numbers in words
+   * @returns {String} the numbers in words
    * @description converts each numeral in number to word equivalent
    */
   numberWords() {
+    if (/\D/.test(this)) {
+      return 'invalid characters present in number(s) string';
+    }
     const numbersAsString = ['zero', 'one', 'two', 'three', 'four', 'five',
       'six', 'seven', 'eight', 'nine'
     ];
-    return this.replace(/\D+/g, '')
-      .split('')
-      .map(number => numbersAsString[number])
-      .join(' ');
+    return this.replace(/\d/g, number => `${numbersAsString[number]} `).trim();
   },
 
   /**

@@ -3,6 +3,14 @@
 
 A javascript program that extends the javascript String prototype class by adding more string manipulation methods.
 
+## Technologies
+- node ^4
+- javascript
+- Html5
+- Css3
+- Jade
+- express
+
 ## New Methods
 1. hasVowels() - Returns a Boolean (True if this String contains an English vowel, otherwise False)
 2. toUpper() - Returns this String with all it's lower case English alphabets converted to upper case
