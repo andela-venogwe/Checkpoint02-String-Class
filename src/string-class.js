@@ -58,7 +58,7 @@ const StringExtend = {
    * @description show an array of the words in a string
    */
   words() {
-    return this.match(/[\w'_-?]+/g);
+    return this.match(/[\w'_-]+/g);
   },
 
   /**
@@ -86,7 +86,7 @@ const StringExtend = {
     const integer = currencyString[0] || '0';
     const fraction = parseFloat(`0.${currencyString[1]}`).toFixed(2)
       .slice(1);
-    return `${integer.replace(/(\d)(?=(\d{3})+(?!\d))/, '$1,')}${fraction}`;
+    return `${integer.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}${fraction}`;
   },
 
   /**
