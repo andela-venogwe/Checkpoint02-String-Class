@@ -58,7 +58,7 @@ const StringExtend = {
    * @description show an array of the words in a string
    */
   words() {
-    return this.match(/[\w'_-]+/g);
+    return this.match(/[\w'_-?]+/g);
   },
 
   /**
