@@ -142,7 +142,8 @@ describe('String Class', () => {
     });
 
     it('should reject invalid currency formats', () => {
-      expect(invalidCurrency.toCurrency()).to.equal('invalid currency string');
+      const error = () => invalidCurrency.toCurrency();
+      expect(error).to.throw(TypeError, /invalid currency string/);
     });
   });
 
@@ -152,7 +153,8 @@ describe('String Class', () => {
     });
 
     it('should return invalid currency string for invalid entries', () => {
-      expect(invalidCurrency.fromCurrency()).to.equal('invalid currency string');
+      const error = () => invalidCurrency.fromCurrency();
+      expect(error).to.throw(TypeError, /invalid currency string/);
     });
   });
 
@@ -195,7 +197,7 @@ describe('String Class', () => {
 
   describe('numberWords ', () => {
     it('should return a String', () => {
-      expect(typeof currencyString.numberWords()).to.equal('string');
+      expect(typeof noDecimalCurrency.numberWords()).to.equal('string');
     });
 
     it('should return the numbers in words', () => {
@@ -203,9 +205,10 @@ describe('String Class', () => {
       .to.equal('one two two one two one');
     });
 
-    it('should return invalid characters present in number(s) string', () => {
-      expect(testString.numberWords())
-      .to.equal('invalid characters present in number(s) string');
+    it('should throw a TypeError for invalid strings', () => {
+      const error = () => testString.numberWords();
+      expect(error).to
+      .throw(TypeError, /invalid characters present in string/);
     });
   });
 
