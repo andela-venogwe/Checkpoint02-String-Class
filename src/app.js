@@ -36,9 +36,9 @@ app.controller('DropdownController', ($scope) => {
       characters(including whitespace character), otherwise False`]
     ]
   };
-  
+
   $scope.theResults = () => {
-    if($scope.selectedMethod){
+    if ($scope.selectedMethod) {
       switch ($scope.selectedMethod[0]) {
         case 'toCurrency':
         case 'fromCurrency':
@@ -46,7 +46,7 @@ app.controller('DropdownController', ($scope) => {
           try {
             $scope.result = $scope.inputText[$scope.selectedMethod[0]]();
           } catch (error) {
-            $scope.result =  error;
+            $scope.result = error;
           }
           break;
         default:

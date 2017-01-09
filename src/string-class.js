@@ -95,10 +95,10 @@ const StringExtend = {
    * @description formats a currency string to number
    */
   fromCurrency() {
-    if(!/^(\.|\d*\.?)(\d*)?\d$/.test(this)){
-      throw new TypeError('invalid currency string')
+    if (!/^(\.|\d*\.?)(\d*)?\d$/.test(this)) {
+      throw new TypeError('invalid currency string');
     }
-    return  +this;
+    return +this;
   },
 
   /**
