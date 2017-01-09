@@ -80,7 +80,7 @@ const StringExtend = {
    */
   toCurrency() {
     if (!/^(\.|\d*\.?)(\d*)?\d$/.test(this)) {
-      return 'invalid currency string';
+      throw new TypeError('invalid currency string');
     }
     const currencyString = this.split('.');
     const integer = currencyString[0] || '0';
@@ -95,8 +95,10 @@ const StringExtend = {
    * @description formats a currency string to number
    */
   fromCurrency() {
-    return /^(\.|\d*\.?)(\d*)?\d$/
-    .test(this) ? +this : 'invalid currency string';
+    if(!/^(\.|\d*\.?)(\d*)?\d$/.test(this)){
+      throw new TypeError('invalid currency string')
+    }
+    return  +this;
   },
 
   /**
@@ -142,7 +144,7 @@ const StringExtend = {
    */
   numberWords() {
     if (/\D/.test(this)) {
-      return 'invalid characters present in number(s) string';
+      throw new TypeError('invalid characters present in string');
     }
     const numbersAsString = ['zero', 'one', 'two', 'three', 'four', 'five',
       'six', 'seven', 'eight', 'nine'
