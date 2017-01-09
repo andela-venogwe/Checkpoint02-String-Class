@@ -9,6 +9,7 @@ engines:
 ratings:
   paths:
   - "src/*.js"
-  - "*.js"
+  - "*app.js"
+  - "gulpfile.js"
 exclude_paths:
 - test/
