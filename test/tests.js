@@ -70,7 +70,7 @@ describe('String Class', () => {
       expect(testConsonantString.ucFirst()[0]).to.equal('D');
     });
 
-    it(`should return the string if the 
+    it(`should return the string if the
     first letter isn't a letter or uppercase word`, () => {
       expect(currencyString.ucFirst()).to.equal(currencyString);
     });
