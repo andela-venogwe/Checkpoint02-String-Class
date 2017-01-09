@@ -28,6 +28,12 @@
         ]
       }
     ],
+    "import/no-extraneous-dependencies": [
+      "error", 
+      {
+        "devDependencies": true
+      }
+    ],
     "valid-jsdoc": [
       0,
       {
