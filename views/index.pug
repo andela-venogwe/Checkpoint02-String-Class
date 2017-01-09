@@ -10,10 +10,10 @@ block content
         span(ng-if="selectedMethod[1]", ng-bind="' : ' + selectedMethod[1]")
     div#input-box
       p(type='Name:')
-        input.big(ng-model="inputText", ng-change="{{result = inputText[selectedMethod[0]]()}}", placeholder='Enter Test String Here...')
+        input.big(ng-model="inputText", ng-change="{{selectedMethod ? theResults() : ''}}", placeholder='Enter Test String Here...')
     div.custom-dropdown.big
       label {{selectedMethod[1]}}
-      select(ng-model="selectedMethod", ng-options="method[0] for method in methods.values", ng-selected="{{result = inputText[selectedMethod[0]]()}}")
+      select(ng-model="selectedMethod", ng-options="method[0] for method in methods.values", ng-selected="theResults()")
         option(value="" disabled selected) -- please choose a method --
     div#result(ng-show="selectedMethod[1]")
       p(ng-bind="result")
