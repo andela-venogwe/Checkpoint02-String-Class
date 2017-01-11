@@ -49,7 +49,7 @@ const StringExtend = {
    * @description checks if a string is a question
    */
   isQuestion() {
-    return /\?$/.test(this);
+    return /^[\w+ .-]+\?$/.test(this);
   },
 
   /**
@@ -170,5 +170,4 @@ const StringExtend = {
     return /(.)\1{1}/.test(this);
   }
 };
-
 Object.assign(String.prototype, StringExtend);
