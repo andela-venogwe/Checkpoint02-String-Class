@@ -98,7 +98,7 @@ const StringExtend = {
     if (!/^(\.|\d*\.?)(\d*)?\d$/.test(this)) {
       throw new TypeError('invalid currency string');
     }
-    return +this;
+    return +(this.replace(/,+/g, ''));
   },
 
   /**
