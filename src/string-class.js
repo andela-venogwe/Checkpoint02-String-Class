@@ -35,7 +35,7 @@ const StringExtend = {
 
   /**
    * ucFirst
-   * @returns {string} a string with uppercase firt letter
+   * @returns {string} a string with uppercase first letter
    * @description turns the first letter of a string to uppercase
    */
   ucFirst() {
@@ -95,7 +95,7 @@ const StringExtend = {
    * @description formats a currency string to number
    */
   fromCurrency() {
-    if (!/^(\.|\d*\.?)(\d*)?\d$/.test(this)) {
+    if (!/^\d{1,3}((,\d{3})+(\.\d+)?|\.\d+)?$/.test(this)) {
       throw new TypeError('invalid currency string');
     }
     return +(this.replace(/,+/g, ''));
