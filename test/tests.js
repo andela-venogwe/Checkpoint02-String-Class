@@ -2,34 +2,24 @@ const chai = require('chai');
 
 const StringClass = require('../src/string-class');
 
-const expect = chai.expect,
-  testString = 'hello says the devil\'s',
-  testVowelString = 'aydfccg',
-  testConsonantString = 'ddfgnmpl',
-  UpperCaseString = 'DDFGNMPL',
-  questionString = 'aydfccg?',
-  currencyString = '12212.11221',
-  noDecimalCurrency = '122121',
-  threeDecimalCurrency = '0.177',
-  mantissaCurrency = '.11',
-  invalidCurrency = '11,2.3.4',
-  singleDigit = '2',
-  doubleString = 'terrible',
-  noDoubles = '21plics';
+const expect = chai.expect;
 
 describe('String Class', () => {
   describe('hasVowels', () => {
+    const consonantString = 'hbdjklm';
+    const vowelString = 'aydfccg';
+
     it('should return a Boolean', () => {
-      expect(typeof testConsonantString.hasVowels()).to.equal('boolean');
-      expect(typeof testVowelString.hasVowels()).to.equal('boolean');
+      expect(typeof consonantString.hasVowels()).to.equal('boolean');
+      expect(typeof vowelString.hasVowels()).to.equal('boolean');
     });
 
     it('should return true if the string contains vowels', () => {
-      expect(testVowelString.hasVowels()).to.equal(true);
+      expect(vowelString.hasVowels()).to.equal(true);
     });
 
     it('should return false if the string has no vowel', () => {
-      expect(testConsonantString.hasVowels()).to.equal(false);
+      expect(consonantString.hasVowels()).to.equal(false);
     });
 
     it('should return false for an empty string', () => {
@@ -38,57 +28,70 @@ describe('String Class', () => {
   });
 
   describe('toUpper', () => {
+    const testString = 'ddfgnmpl';
+
     it('should return a String', () => {
-      expect(typeof testConsonantString.toUpper()).to.equal('string');
+      expect(typeof testString.toUpper()).to.equal('string');
     });
 
     it('should transfom the string letters to uppercase', () => {
-      expect(testConsonantString.toUpper()).to.equal('DDFGNMPL');
+      expect(testString.toUpper()).to.equal('DDFGNMPL');
     });
   });
 
   describe('toLower', () => {
+    const testString = 'DDFGNMPL';
     it('should return a String', () => {
-      expect(typeof testConsonantString.toLower()).to.equal('string');
+      expect(typeof testString.toLower()).to.equal('string');
     });
 
     it('should transfom the string letters to lowercase', () => {
-      expect(UpperCaseString.toLower()).to.equal(testConsonantString);
+      expect(testString.toLower()).to.equal('ddfgnmpl');
     });
   });
 
   describe('ucFirst', () => {
+    const testString = 'dDFGNMPL';
+    const testString0 = '1223221';
+
     it('should return a String', () => {
-      expect(typeof testConsonantString.ucFirst()).to.equal('string');
+      expect(typeof testString.ucFirst()).to.equal('string');
     });
 
     it('should return the original string', () => {
-      expect(testConsonantString.ucFirst().toUpper()).to.equal('DDFGNMPL');
+      expect(testString.ucFirst().toUpper()).to.equal('DDFGNMPL');
     });
 
     it('should transform the First Character in string to Upper case', () => {
-      expect(testConsonantString.ucFirst()[0]).to.equal('D');
+      expect(testString.ucFirst()[0]).to.equal('D');
     });
 
     it(`should return the string if the
     first letter isn't a letter or uppercase word`, () => {
-      expect(currencyString.ucFirst()).to.equal(currencyString);
+      expect(testString0.ucFirst()).to.equal('1223221');
     });
   });
 
   describe('isQuestion', () => {
+    const question = 'hello are you there?',
+      special = 'is #£ a non word string?',
+      notQuestion = 'is coming home';
+
     it('should return a Boolean', () => {
-      expect(typeof testConsonantString.isQuestion()).to.equal('boolean');
-      expect(typeof questionString.isQuestion()).to.equal('boolean');
-      expect(typeof testConsonantString.isQuestion()).to.equal('boolean');
+      expect(typeof question.isQuestion()).to.equal('boolean');
+      expect(typeof notQuestion.isQuestion()).to.equal('boolean');
     });
 
     it('should return true if the string is a question', () => {
-      expect(questionString.isQuestion()).to.equal(true);
+      expect(question.isQuestion()).to.equal(true);
     });
 
     it('should return false if the string is not a question', () => {
-      expect(testConsonantString.isQuestion()).to.equal(false);
+      expect(notQuestion.isQuestion()).to.equal(false);
+    });
+
+    it('should return false for strings with special characters', () => {
+      expect(special.isQuestion()).to.equal(false);
     });
 
     it('should return false for an empty string', () => {
@@ -97,19 +100,22 @@ describe('String Class', () => {
   });
 
   describe('words', () => {
+    const sentence = 'the big-fat cow';
+
     it('should return an array', () => {
-      expect(Array.isArray(testString.words())).to.equal(true);
+      expect(Array.isArray(sentence.words())).to.equal(true);
     });
 
     it('should return a list of the words in the string', () => {
-      expect(testString.words()[0]).to.equal('hello');
-      expect(testString.words()[1]).to.equal('says');
-      expect(testString.words()[2]).to.equal('the');
-      expect(testString.words()[3]).to.equal('devil\'s');
+      expect(sentence.words()[0]).to.equal('the');
+      expect(sentence.words()[1]).to.equal('big-fat');
+      expect(sentence.words()[2]).to.equal('cow');
     });
   });
 
   describe('wordCount', () => {
+    const testString = 'hello says the devil\'s';
+
     it('should return a Number', () => {
       expect(typeof testString.wordCount()).to.equal('number');
     });
@@ -124,12 +130,18 @@ describe('String Class', () => {
   });
 
   describe('toCurrency', () => {
+    const currency = '12212.11221',
+      noDecimalCurrency = '122121',
+      threeDecimalCurrency = '0.177',
+      mantissaCurrency = '.11',
+      invalidCurrency = '11,2.3.4';
+
     it('should return a String', () => {
-      expect(typeof currencyString.toCurrency()).to.equal('string');
+      expect(typeof currency.toCurrency()).to.equal('string');
     });
 
     it('should return a currency representation of the String', () => {
-      expect(currencyString.toCurrency()).to.equal('12,212.11');
+      expect(currency.toCurrency()).to.equal('12,212.11');
     });
 
     it('should return a currency with two decimal places', () => {
@@ -148,8 +160,11 @@ describe('String Class', () => {
   });
 
   describe('fromCurrency', () => {
+    const currency = '122,121.11221';
+    const invalidCurrency = '11222.3';
+
     it('should return the currency as a number', () => {
-      expect(typeof currencyString.fromCurrency()).to.equal('number');
+      expect(typeof currency.fromCurrency()).to.equal('number');
     });
 
     it('should return invalid currency string for invalid entries', () => {
@@ -159,6 +174,9 @@ describe('String Class', () => {
   });
 
   describe('inverseCase', () => {
+    const testConsonantString = 'ddfgnmpl',
+      UpperCaseString = 'DDFGNMPL';
+
     it('should return a Boolean', () => {
       expect(typeof testConsonantString.inverseCase()).to.equal('string');
     });
@@ -170,6 +188,7 @@ describe('String Class', () => {
   });
 
   describe('alternatingCase', () => {
+    const testString = 'hello says the devil\'s';
     it('should return a String', () => {
       expect(typeof testString.alternatingCase()).to.equal('string');
     });
@@ -185,24 +204,30 @@ describe('String Class', () => {
   });
 
   describe('getMiddle', () => {
+    const testString = 'hello';
+    const testString0 = 'read';
+
     it('should return a String', () => {
-      expect(typeof testVowelString.getMiddle()).to.equal('string');
+      expect(typeof testString.getMiddle()).to.equal('string');
     });
 
     it('should return the character(s) in the middle of the string', () => {
-      expect(testVowelString.getMiddle()).to.equal('f');
-      expect(testConsonantString.getMiddle()).to.equal('gn');
+      expect(testString.getMiddle()).to.equal('l');
+      expect(testString0.getMiddle()).to.equal('ea');
     });
   });
 
   describe('numberWords ', () => {
+    const numbers = '12345',
+      testString = '123four';
+
     it('should return a String', () => {
-      expect(typeof noDecimalCurrency.numberWords()).to.equal('string');
+      expect(typeof numbers.numberWords()).to.equal('string');
     });
 
     it('should return the numbers in words', () => {
-      expect(noDecimalCurrency.numberWords())
-      .to.equal('one two two one two one');
+      expect(numbers.numberWords())
+      .to.equal('one two three four five');
     });
 
     it('should throw a TypeError for invalid strings', () => {
@@ -213,24 +238,29 @@ describe('String Class', () => {
   });
 
   describe('isDigit', () => {
+    const singleDigit = '2',
+      doubleDigit = '22';
+
     it('should return a Boolean', () => {
-      expect(typeof testString.isDigit()).to.equal('boolean');
+      expect(typeof singleDigit.isDigit()).to.equal('boolean');
     });
 
     it('should return true if the string is a digit(one number)', () => {
       expect(singleDigit.isDigit()).to.equal(true);
-      expect(noDecimalCurrency.isDigit()).to.equal(false);
+      expect(doubleDigit.isDigit()).to.equal(false);
     });
   });
 
   describe('doubleCheck', () => {
+    const doubleString = 'terrible',
+      noDoubles = '21plics';
+
     it('should return a Boolean', () => {
       expect(typeof doubleString.doubleCheck()).to.equal('boolean');
     });
 
     it('should return true if the string contains double characters', () => {
       expect(doubleString.doubleCheck()).to.equal(true);
-      expect(currencyString.doubleCheck()).to.equal(true);
     });
 
     it('should return false for strings with no repeating characters', () => {
