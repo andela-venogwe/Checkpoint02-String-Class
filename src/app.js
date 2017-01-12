@@ -36,21 +36,15 @@ app.controller('DropdownController', ($scope) => {
       characters(including whitespace character), otherwise False`]
     ]
   };
+  $scope.selectedMethod = [];
+  $scope.inputText = '';
 
   $scope.theResults = () => {
-    if ($scope.selectedMethod) {
-      switch ($scope.selectedMethod[0]) {
-        case 'toCurrency':
-        case 'fromCurrency':
-        case 'numberWords':
-          try {
-            $scope.result = $scope.inputText[$scope.selectedMethod[0]]();
-          } catch (error) {
-            $scope.result = error;
-          }
-          break;
-        default:
-          $scope.result = $scope.inputText[$scope.selectedMethod[0]]();
+    if ($scope.selectedMethod.length === 2 && $scope.inputText.length > 0) {
+      try {
+        $scope.result = $scope.inputText[$scope.selectedMethod[0]]();
+      } catch (error) {
+        $scope.result = 'bad input string';
       }
     }
   };
