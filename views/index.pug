@@ -1,0 +1,25 @@
+extends layout.pug
+
+block content
+  div#main(data-ng-controller='DropdownController', data-ng-cloak)
+    h1 String Class Extension
+    p An app that extends the String class in Javascript to support more string manipulation features.
+    div#description
+      p
+        span#method-name(data-ng-bind="selectedMethod[0]")
+        span(data-ng-if="selectedMethod[1]", data-ng-bind="' : ' + selectedMethod[1]")
+    div#input-box
+      p
+        input.big(data-ng-model="inputText", data-ng-change="theResults()", placeholder='Enter Test String Here...')
+    div.custom-dropdown.big
+      label {{selectedMethod[1]}}
+      select(data-ng-model="selectedMethod", data-ng-options="method[0] for method in methods.values", data-ng-selected="theResults()")
+        option(value="", disabled, selected) -- please choose a method --
+    div#result
+      p(data-ng-bind="result")
+    footer
+      p &copy; 2017 Enogwe Victor - 
+        a(href="//github.com/andela-venogwe/Checkpoint02-String-Class/") github 
+        span - 
+        a(href="//andela.com") Andela
+

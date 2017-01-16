@@ -1,0 +1,146 @@
+/* CodePen demo */
+body {
+  margin-top: 170px;
+  background: #2a2a2b;
+  color: #fff;
+  font-family: Montserrat;
+  text-align: center
+}
+#main{
+  margin: 0 auto;
+}
+
+#description, #result {
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 90%;
+}
+
+#result {
+  margin-top: 15px;
+  background-color: #333;
+  color: #1abc9c;
+  padding: 15px;
+}
+
+#method-name {
+  color: #1abc9c;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+select {
+  font-family: Montserrat;
+}
+
+input{
+  width:90%;
+  padding:10px;
+  font-family: Montserrat;
+  color: #fff;
+  box-sizing:border-box;
+  background:none;
+  outline:none;
+  resize:none;
+  border:0;
+  transition:all .3s;
+  border-bottom:1px solid #bebed2;
+}
+
+input:focus{
+  border-bottom:2px solid #78788c
+}
+
+.big {
+  font-size: 1.2em;
+}
+
+.small {
+  font-size: .7em;
+}
+
+/* Custom dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.custom-dropdown select {
+  width: 100%;
+  background-color: #1abc9c;
+  color: #fff;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;	
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.custom-dropdown select[disabled] {
+  color: rgba(0,0,0,.3);
+}
+
+.custom-dropdown select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+.custom-dropdown::before {
+  background-color: rgba(0,0,0,.15);
+}
+
+.custom-dropdown::after {
+  color: rgba(0,0,0,.4);
+}
+
+label {
+  display: none;
+}
+
+footer{
+  margin-top: 70px;
+  text-align: center;
+}
+
+footer p {
+  text-align: center;
+  margin: 0 auto;
+  width: 350px;
+}
+
+footer p a {
+  text-decoration: none;
+  color: #1abc9c;
+}
