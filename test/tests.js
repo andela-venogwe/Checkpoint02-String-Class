@@ -73,8 +73,9 @@ describe('String Class', () => {
   });
 
   describe('isQuestion', () => {
-    const question = 'hello are you there?',
+    const question = 'hello are you there ?',
       special = 'is #£ a non word string?',
+      allSpecial = '££$%*?',
       notQuestion = 'is coming home';
 
     it('should return a Boolean', () => {
@@ -84,14 +85,17 @@ describe('String Class', () => {
 
     it('should return true if the string is a question', () => {
       expect(question.isQuestion()).to.equal(true);
+      expect(special.isQuestion()).to.equal(true);
     });
 
     it('should return false if the string is not a question', () => {
       expect(notQuestion.isQuestion()).to.equal(false);
+      expect(allSpecial.isQuestion()).to.equal(false);
     });
 
-    it('should return false for strings with special characters', () => {
-      expect(special.isQuestion()).to.equal(false);
+    it(`should return false for strings containing only
+    special characters`, () => {
+      expect(allSpecial.isQuestion()).to.equal(false);
     });
 
     it('should return false for an empty string', () => {

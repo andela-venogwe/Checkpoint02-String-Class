@@ -49,7 +49,8 @@ const StringExtend = {
    * @description checks if a string is a question
    */
   isQuestion() {
-    return /^[\w+ .-]+\?$/.test(this);
+    return this.length !== 0 ?
+     !/(^([^\w]+)$)|(.+\w+.+[^?]$)/.test(this) : false;
   },
 
   /**
