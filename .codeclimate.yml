@@ -1,6 +1,13 @@
 engines:
   eslint:
     enabled: true
+    exclude_fingerprints:
+    - 143e9928bf1b014338348adef06c32d1
+    - fe6a07e2c1a1761f40938f7a6ab7a69f
+    - 2417509d1e99a7297062acd439a5fbb8
+    - ffb175426f9583ad2fd452833c94685f
+    - aefaf2b524d1ef66bdaa5d5586c302c3
+    - 3b5b787c8d03ba6b1a5aec62b05c5fe9
   duplication:
     enabled: false
     config:
@@ -9,5 +16,9 @@ engines:
 ratings:
   paths:
   - "src/*.js"
+  - "app.js"
+  - "gulpfile.js"
+  - "routes/index.js"
+  - "test/tests.js"
 exclude_paths:
-- test/
+- public/
